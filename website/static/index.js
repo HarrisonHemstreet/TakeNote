@@ -6,3 +6,7 @@ function deleteNote(noteId) {
         window.location.href = "/";
     });
 }
+
+const loger = (val) => {
+    console.log(val);
+}
