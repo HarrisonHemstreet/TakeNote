@@ -33,3 +33,14 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
             return jsonify({})
+
+@views.route("/edit-note", methods=["POST"])
+def edit_note():
+    note = json.loads(request.data)
+    noteId = note["noteId"]
+    note = Note.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+            return jsonify({})
